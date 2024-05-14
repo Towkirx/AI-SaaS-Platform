@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
-import { ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { ChatCompletionMessageParam, CreateChatCompletionRequestMessage } from "openai/resources/index.mjs";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 const instructionMessage: ChatCompletionMessageParam = {
   role: "system",
-  content: "Answer questions as short and quickly as possible. You must do it under 75 tokens."
+  content: "You are a code generator. You write it as short as possible. You only write the code, no explanations, no comments, and no imports. You must answer only in markdown code snippets. Complete in 75 tokens"
 }
 
 export async function POST(
@@ -18,7 +18,7 @@ export async function POST(
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { messages  } = body;
+    const { messages } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
@@ -34,14 +34,14 @@ export async function POST(
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      max_tokens: 75,
-      temperature: 0.5,
-      messages: [instructionMessage, ...messages]
+      messages: [instructionMessage, ...messages],
+      temperature: 0.2,
+      max_tokens: 75
     });
-    
+
     return NextResponse.json(response.choices[0].message);
   } catch (error) {
-    console.log('[CONVERSATION_ERROR]', error);
+    console.log('[CODE_ERROR]', error);
     return new NextResponse("Internal Error", { status: 500 });
   }
 };
