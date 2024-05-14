@@ -27,6 +27,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> 2f1ee55 (Conversation AI API added)
 
 # vercel
 .vercel
