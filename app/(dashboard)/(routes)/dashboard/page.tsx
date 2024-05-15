@@ -61,7 +61,7 @@ const DashboardPage = () => {
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
-          Explore the Power of MuseAI
+          Explore the Power of Genius
         </h2>
         <p className="text-muted-foreground font-light text-small md:text-lg text-center">
           Unleash Your Creativity

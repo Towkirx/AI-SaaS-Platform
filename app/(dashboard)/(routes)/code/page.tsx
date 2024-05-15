@@ -1,6 +1,6 @@
 "use client";
 
-import { Heading } from "@/components/heading";
+import Heading from "@/components/heading";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import OpenAI from "openai";
 import { Empty } from "@/components/empty";
-import { Loader } from "@/components/loader";
+import { Loader } from "@/components/ui/loader";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";

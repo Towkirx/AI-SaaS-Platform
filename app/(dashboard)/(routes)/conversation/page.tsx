@@ -83,7 +83,7 @@ const ConversationPage = () => {
                       <Input
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
-                        placeholder="What is the process of photosynthesis and how does it contribute to the survival of plants?"
+                        placeholder="What is the concept of 'time dilation' and how does it relate to Einstein's theory of relativity?"
                         {...field}
                       />
                     </FormControl>
